@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="App">
         <header>
-          <h1>Welcome to React Fibonacci page</h1>
+          <h1>Welcome to React Fibonacci page - MULTI-VERSION</h1>
           <Link to="/">Home</Link>
           <Link to="/otherpage">OtherPage</Link>
         </header>
