@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t evandrodp/multi-client-test -f ./client/Dockerfile.dev ./client
+
+scripts:
+  - docker run -e CI=true evandrodp/multi-client-test run test -- --coverage
+
+after_success:
+ - docker build -t evandrodp/prod-multi-client ./client
+ - docker build -t evandrodp/prod-multi-nginx ./nginx
+ - docker build -t evandrodp/prod-multi-server ./server
+ - docker build -t evandrodp/prod-multi-worker ./worker
+ # Login to Docker Hub (Docker Registry)
+ - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+ # Push the images to the hub docker
+ - docker push evandrodp/prod-multi-client
+ - docker push evandrodp/prod-multi-nginx
+ - docker push evandrodp/prod-multi-server
+ - docker push evandrodp/prod-multi-worker
