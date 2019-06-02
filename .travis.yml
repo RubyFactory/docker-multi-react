@@ -23,5 +23,15 @@ after_success:
  - docker push evandrodp/prod-multi-worker
 
 deploy:
-  service: elasticbeanstalk
-  region:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+  region: us-east-1
+  app: prod-multi
+  env: ProdMulti-vpc-env
+  bucket_name: elasticbeanstalk-us-east-1-794418720608
+  bucket_path: prod-multi
+  on:
+    branch: master
