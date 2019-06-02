@@ -30,7 +30,7 @@ deploy:
     secure: $AWS_SECRET_KEY
   region: us-east-1
   app: prod-multi
-  env: ProdMulti-vpc-env
+  env: ProdMulti-env
   bucket_name: elasticbeanstalk-us-east-1-794418720608
   bucket_path: prod-multi
   on:
