@@ -21,3 +21,7 @@ after_success:
  - docker push evandrodp/prod-multi-nginx
  - docker push evandrodp/prod-multi-server
  - docker push evandrodp/prod-multi-worker
+
+deploy:
+  service: elasticbeanstalk
+  region:

@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "prod-multi-client",
+      "image": "evandrodp/prod-multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "prod-multi-server",
+      "image": "evandrodp/prod-multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "prod-multi-worker",
+      "image": "evandrodp/prod-multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "evandrodp/prod-multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["prod-multi-client", "prod-multi-server"]
+    }
+  ]
+}
