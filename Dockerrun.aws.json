@@ -5,24 +5,28 @@
       "name": "prod-multi-client",
       "image": "evandrodp/prod-multi-client",
       "hostname": "client",
+      "memory": 128,
       "essential": false
     },
     {
       "name": "prod-multi-server",
       "image": "evandrodp/prod-multi-server",
       "hostname": "api",
+      "memory": 128,
       "essential": false
     },
     {
       "name": "prod-multi-worker",
       "image": "evandrodp/prod-multi-worker",
       "hostname": "worker",
+      "memory": 128,
       "essential": false
     },
     {
       "name": "nginx",
       "image": "evandrodp/prod-multi-nginx",
       "hostname": "nginx",
+      "memory": 128,
       "essential": true,
       "portMappings": [
         {
